@@ -1,0 +1,39 @@
+1) Singly Linked Lists are a method of representing and grouping patients in a hospital environment in Task 1 with the addPatient function having an O(n) time
+complexity because of the traversal through the head (first) node to the last. The removePatient function has an O(n) time complexity due to the requirement of
+searching through the list until finding the patient associated with the entered ID. The findPatient function also has an O(n) time complexity due to having to
+check against every node in the linked list in the worst case. When comparing a Linked List against an ArrayList, each type has strengths and weaknesses associated
+with both. A Linked List typically performs better when dealing with insertion and deletion than an ArrayList, as Linked Lists do not require all other items to
+shift around in memory when an item is deleted from the list, thus making it easier and less costly in terms of time and energy to delete a patient.
+However, searching a Linked List for an item is slower, as the search cannot be performed using an index for direct access. On the contrary, ArrayLists do provide
+fast access by index; however, removing items from the ArrayList incurs a large performance penalty, as all other items beyond the removed item will need to be also
+shifted in memory. Because hospitals will constantly be updating patient information, using a Linked List for this task makes sense logically.
+
+2) Task 2 illustrates the operation of a Queue used to manage requests for treatment. A Queue follows the First In First Out (FIFO) principle. In a Queue, the first
+request for treatment received and added to the Queue is the first request for treatment processed or removed from the Queue. Queue operations provide an equitable
+means of processing treatment requests for patients within the hospital system. The enqueue function adds a treatment request to the end of a Queue and takes O(1)
+time to complete. The dequeue function removes the treatment request at the front of the Queue and also takes O(1) time to complete. These O(1) operations allow for
+quick processing of treatment requests.If a Stack, instead of a Queue, had been used to manage treatment requests, what occurs is completely opposite. Stacks operate
+on a Last In First Out (LIFO) basis. Therefore, the last request received, i.e. the last patient added to a Stack would be the first patient to be treated.
+This would not be an equitable means of processing patients in a hospital system, as it would cause earlier patients to wait indefinitely for treatment.
+Thus, the major difference between Stack and Queue operations is the characteristics of the operations. Although the time complexity of both Stack and Queue
+operations is O(1), FIFO order is logically accurate for treatment requests, which is why a Queue would be the best data structure to utilize.
+
+3) In Task 3, a Stack is used as a data structure to store discharged patients. Because a Stack is based on the last-in, first-out (LIFO) method, it allows access
+to only recently discharged patients first. This is useful when reviewing or undoing previous discharge records, as the most recently discharged records are typically
+of greater value and relevance than those that were discharged earlier. In terms of time complexity, the push method takes O(1) to insert a discharge record at the
+top of the Stack and the pop method also takes O(1) to remove the most recent discharge record from the top of the Stack. The peek method allows access to view the
+latest discharge record (the top of the Stack), without actually removing it. If instead of a Stack a Queue was used, it would store the oldest discharge record first,
+which is generally not what hospitals need as the staff require timely access to recent discharge information. The time complexities of both Stack and Queue are very
+similar, but which data structure you should use depends on how you will be using the data. Because discharge records are handled in reverse order from the time of
+discharge, a Stack is a better option to complete the task.
+
+4) In Task 4, we have created an integrated hospital system that contains all the individual data structures discussed in previous tasks. Keeping in mind the
+requirements of managing treatment requests, creating discharge records and providing fast access to patient records, we have created a Linked List for each patient,
+and stored the treatment requests as a Queue, while a Stack has been created to maintain discharge history, and a HashMap to quickly look up patient records via their
+IDs. By creating a HashMap, we have reduced the time it takes to look up a patient to O(1) time. To handle patients based on their level of priority, we have created
+two Queues: one for priority cases and one for regular cases. This allows us to prioritize the treatment of priority patients while keeping the FIFO order for both
+types of patients. Even with separate Queues for both types of patients, the Enqueue and Dequeue functions will still execute in O(1) time complexity.
+We also implemented the sorting of patients based on severity using Bubble Sort, which has a time complexity of O(n²). Though Bubble Sort is not very efficient at
+sorting large volumes of data, it is a straightforward sorting method and is suitable for smaller data sets. If we had elected to use a Heap-based Priority Queue
+to handle sorting and priority, we would have achieved O(log n) efficiency for sorting and priority, respectively. However, due to our aims of being educational,
+and demonstrating how different data structures can work in concert with one another, we believe the current implementation suffices, and serves as a good teaching tool.
